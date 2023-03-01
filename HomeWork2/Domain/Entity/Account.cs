@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 namespace HomeWork2.Domain.Entity
 {
     internal class Account : BaseEntity
-    {
-       
+    {      
         public decimal Amount { get; set; }
-        public Account(decimal amount)
-        {
-            Id = Guid.NewGuid();
-            Amount = amount;
-        }
+
+        public Account(decimal amount) => (Id, Amount) = (Guid.NewGuid(), amount);        
     }
 }

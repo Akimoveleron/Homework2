@@ -16,20 +16,11 @@ namespace HomeWork2.Domain.Entity
         public string? Email { get; set; }
         public Position ManagerPosition { get; set; }
         public string? PhoneNumber { get; set; }
+
+
+        public Manager(string firstName, string lastName, string patronymic, string email, Position managerPosition, string phoneNumber) =>
+            (Id, FirstName, LastName, Patronymic, Email, ManagerPosition, PhoneNumber) = 
+            (Guid.NewGuid(), firstName, lastName, patronymic, email, managerPosition, phoneNumber);
        
-
-        public Manager(string firstName, string lastName, string patronymic, string email,
-            Position managerPosition, string phoneNumber)
-        {
-           Id = Guid.NewGuid();
-            FirstName = firstName;
-            LastName = lastName;
-            Patronymic = patronymic;
-            Email = email;
-            ManagerPosition = managerPosition;
-            PhoneNumber = phoneNumber;
-
-
-        }
     }
 }

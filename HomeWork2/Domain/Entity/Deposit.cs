@@ -14,15 +14,7 @@ namespace HomeWork2.Domain.Entity
         public Guid ManagerId { get; set; }
         public DateTime OpenningDate { get; set; }
 
-        public Deposit(Guid managerId, Guid clientId)
-        {
-
-            Id = Guid.NewGuid();
-            ClientId = clientId;
-            ManagerId = managerId;
-
-          
-            OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
-        }
+        public Deposit(Guid managerId, Guid clientId) => (Id, ClientId, ManagerId) = (Guid.NewGuid(), clientId, managerId);
+       
     }
 }

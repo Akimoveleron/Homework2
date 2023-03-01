@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RwZzpwbOElbrFNiGv0RjxZocOfEsbJdnJnXzutQEaXY1Hy780ralu5ZMs1sYURSTLHkpHTsVBhKy9mYgTCdNbQ==",
+  "dgSpecHash": "hEXFAbaeA4yPLmJmxOg+kiJE6y4KXQ0Xpx/i+WuiD2p0qOL2kQZDv+KFQyDQQx0WpUUz6s56RC5rYeV1Q1DPTA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Emgrand\\source\\repos\\HomeWork2\\HomeWork2\\HomeWork2.csproj",
+  "projectFilePath": "C:\\Users\\Emgrand\\Desktop\\OTUS\\Homeworks\\HomeWork2\\HomeWork2\\HomeWork2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Emgrand\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\Emgrand\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",
