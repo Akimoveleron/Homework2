@@ -10,7 +10,11 @@ namespace HomeWork2.Domain.Entity
     internal class Account : BaseEntity
     {      
         public decimal Amount { get; set; }
+        public Client? Client { get; set; }
+        public Guid ClientId { get; set; }
 
-        public Account(decimal amount) => (Id, Amount) = (Guid.NewGuid(), amount);        
+     
+
+              
     }
 }

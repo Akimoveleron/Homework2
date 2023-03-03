@@ -45,30 +45,45 @@ namespace HomeWork2.Controllers
         }
         public static void AddFiveElemtnts() 
         {
-             Manager [] managers= new Manager[] { new Manager("Ivan", "Ivanov", "Ivanovich", "ivan@mail.ru", Position.SalesManager, "5623"),
-                                                        new Manager("Aleksand", "Apolonov", "Vladimirovich", "Aktrc@mail.ru", Position.SalesManager, "5725"),
-                                                        new Manager("Vitalii", "Semenov", "Vadimovich", "vital@mail.ru", Position.SalesManager, "1775"),
-                                                        new Manager("Sergei", "Samarin", "Anatolevich", "Serg@mail.ru", Position.Chief, "7777"),
-                                                        new Manager("Vladimir", "Matveev", "Vladimirovich", "vladimir@mail.ru", Position.BranchManager, "7247")};
+             Manager [] managers= new Manager[] { new Manager{FirstName= "Ivan", LastName = "Ivanov", Patronymic="Ivanovich", Email = "ivan@mail.ru",ManagerPosition =  Position.SalesManager, PhoneNumber =  "5623" },
+                                                        new Manager{ FirstName = "Aleksand", LastName = "Apolonov", Patronymic = "Vladimirovich", Email = "Aktrc@mail.ru", ManagerPosition = Position.SalesManager, PhoneNumber = "5725" },
+                                                        new Manager{ FirstName = "Vitalii", LastName = "Semenov", Patronymic = "Vadimovich", Email = "vital@mail.ru", ManagerPosition = Position.SalesManager, PhoneNumber = "1775" },
+                                                        new Manager{FirstName="Sergei", LastName="Samarin", Patronymic="Anatolevich", Email="Serg@mail.ru", ManagerPosition= Position.Chief, PhoneNumber="7777" },
+                                                        new Manager{ FirstName = "Vladimir", LastName = "Matveev", Patronymic = "Vladimirovich", Email = "vladimir@mail.ru", ManagerPosition = Position.BranchManager, PhoneNumber = "7247" }};
 
-            Account[] accounts = new Account[] { new Account(200), new Account(700), new Account(500), new Account(400), new Account(300) };
 
-            Client[] clients = new Client[] { new Client("Peter", "Petrov", "Petrovich", "petrov@mail.ru", "4001255511", "89501234578", accounts[0].Id),
-                                                     new Client("Aleksandr", "Pushkin", "Sergeevich", "pushkin@mail.ru", "4001255511", "89501234578", accounts[1].Id),
-                                                     new Client("Dmitrii", "Agafonov", "Alekseevich", "aga@mail.ru", "4105255561", "89521238598", accounts[2].Id),
-                                                     new Client("Pavel", "Smirnov", "Sergeevich", "petrov@mail.ru", "4001255511", "89501234578", accounts[3].Id),
-                                                     new Client("Mikhail", "Popov", "Dmitrievich", "popv@mail.ru", "4501285511", "89501235589", accounts[4].Id)};
+            Client[] clients = new Client[] { new Client{FirstName="Peter", LastName="Petrov", Patronymic="Petrovich", Email="petrov@mail.ru", PassportNumber="4001255511",PhoneNumber= "89501234578" },
+                                                     new Client{FirstName = "Aleksandr", LastName = "Pushkin", Patronymic = "Sergeevich", Email = "pushkin@mail.ru", PassportNumber= "4001255511", PhoneNumber="89501234578" },
+                                                     new Client{FirstName="Dmitrii", LastName="Agafonov", Patronymic ="Alekseevich", Email="aga@mail.ru",PassportNumber= "4105255561", PhoneNumber="89521238598" },
+                                                     new Client{FirstName="Pavel", LastName = "Smirnov", Patronymic="Sergeevich", Email="petrov@mail.ru",PassportNumber= "4001255511", PhoneNumber="89501234578" },
+                                                     new Client{FirstName="Mikhail",LastName= "Popov",Patronymic= "Dmitrievich", Email="popv@mail.ru",PassportNumber= "4501285511", PhoneNumber="89501235589" } };
 
-            Deposit[] deposits = new Deposit[] { new Deposit(clients[0].Id, managers[0].Id), new Deposit(clients[1].Id, managers[1].Id),
-                                                         new Deposit(clients[2].Id, managers[2].Id),new Deposit(clients[3].Id, managers[3].Id),
-                                                        new Deposit(clients[4].Id, managers[4].Id),};
           
-            
-            AddElementToDb(managers);
-            AddElementToDb(accounts);
-            AddElementToDb(clients);
-            AddElementToDb(deposits);
 
+
+            Account[] accounts = new Account[] { new Account{Amount= 200,Client= clients[0] }, new Account{Amount= 700,Client= clients[1] }, new Account{Amount= 500,Client= clients[2] },
+                                                new Account{Amount= 400, Client= clients[3] }, new Account{Amount= 300,Client= clients[4] } };
+
+          
+
+            Deposit[] deposits = new Deposit[] { new Deposit { OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc), Client=clients[0], Manager=managers[0] },
+                                 new Deposit { OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc), Client=clients[1], Manager=managers[1] }, 
+                                new Deposit { OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),  Client=clients[2], Manager=managers[2] },
+                                  new Deposit { OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc), Client=clients[3], Manager=managers[3] },
+                                new Deposit { OpenningDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc), Client=clients[4], Manager=managers[4] }};
+
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+            
+
+                db.Set<Client>().AddRange(clients);
+                db.Set<Manager>().AddRange(managers);
+                db.Set<Deposit>().AddRange(deposits);
+                db.Set<Account>().AddRange(accounts);
+                db.SaveChanges();
+
+            }
         }
     }
 }

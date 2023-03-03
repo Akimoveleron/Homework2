@@ -17,7 +17,7 @@ namespace HomeWork2.Domain
         public DbSet<Manager> Managers { get; set; }
 
         public ApplicationContext() => Database.EnsureCreated();
-        //public ApplicationContext() => Database.EnsureDeleted();
+      
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Sber;Username=postgres;Password=postgres");

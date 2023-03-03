@@ -11,10 +11,16 @@ namespace HomeWork2.Domain.Entity
     {
      
         public Guid ClientId { get; set; }
+        public Client? Client { get; set; }
+
         public Guid ManagerId { get; set; }
+        public Manager? Manager { get; set; }
         public DateTime OpenningDate { get; set; }
 
-        public Deposit(Guid managerId, Guid clientId) => (Id, ClientId, ManagerId) = (Guid.NewGuid(), clientId, managerId);
+      
+        
+
+       
        
     }
 }

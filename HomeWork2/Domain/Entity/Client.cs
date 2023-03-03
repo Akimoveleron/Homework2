@@ -16,11 +16,12 @@ namespace HomeWork2.Domain.Entity
         public string? Email { get; set; }
         public string PassportNumber { get; set; }
         public string? PhoneNumber { get; set; }
-        public Guid AccountId { get; set; }
 
-        public Client(string firstName, string lastName, string patronymic, string email,string passportNumber, string phoneNumber, Guid accountId) => 
-            (Id, FirstName, LastName, Patronymic, Email, PassportNumber, PhoneNumber, AccountId) =
-            (Guid.NewGuid(), firstName, lastName, patronymic, email, passportNumber, phoneNumber, accountId);
+        public List<Deposit> Deposits { get; set; } = new();
+        public Account? Account { get; set; }
+       
+
+       
        
     }
 }

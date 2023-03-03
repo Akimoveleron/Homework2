@@ -13,7 +13,7 @@ internal class Program
 
         DbManagement.AddFiveElemtnts();
 
-        DbManagement.AddElementToDb(new Manager("Ivan2", "Ivanov2", "Ivanovich2", "ivan2@mail.ru", Position.SalesManager, "5223"));
+        DbManagement.AddElementToDb(new Manager { FirstName = "Ivan2", LastName = "Ivanov2", Patronymic = "Ivanovich2", Email = "ivan2@mail.ru", ManagerPosition = Position.SalesManager, PhoneNumber = "5523" });
         DbManagement.GetAllData();
 
 
